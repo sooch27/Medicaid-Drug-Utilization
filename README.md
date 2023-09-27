@@ -4,3 +4,4 @@ ETL project that stores medicaid.gov drug utilization data in MySQL database and
 Although fairly limited, one could further develop the project by adding plots to compare and contrast how Medicaid coverage occurs for these drugs in different states.
 
 
+<img width="634" alt="Screenshot 2023-09-27 at 4 46 33 PM" src="https://github.com/sooch27/Medicaid-Drug-Utilization/assets/27388811/5c17f158-938b-4dfd-817e-6395db13879c">
