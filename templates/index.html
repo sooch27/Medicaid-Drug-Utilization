@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ETL Drug Utilization Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>ETL Drug Utilization Project</h1>
+        <p>Drug utilization data are reported by states for covered outpatient drugs that are paid for by state Medicaid agencies since the start of the Medicaid Drug Rebate Program. Here is the data for the states Illinois and Alaska and the amount Medicaid has reimbursed for the top ten used medications during the year 2022</p>
+    <section>
+        <h2>Illinois</h2>
+        {% if top_drugs and 'IL' in top_drugs %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Number of Prescriptions</th>
+                        <th>Total Reimbursement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for drug in top_drugs['IL'] %}
+                        <tr>
+                            <td>{{ drug.product_name }}</td>
+                            <td>{{ "{:,}".format(drug.number_of_prescriptions) }}</td>
+                            <td>${{ "{:,.2f}".format(drug.total_amount_reimbursed) }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="error-message">No data available for Illinois.</p>
+        {% endif %}
+    </section>
+
+    <section>
+        <h2>Alaska</h2>
+        {% if top_drugs and 'AK' in top_drugs %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Number of Prescriptions</th>
+                        <th>Total Reimbursement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for drug in top_drugs['AK'] %}
+                        <tr>
+                            <td>{{ drug.product_name }}</td>
+                            <td>{{ "{:,}".format(drug.number_of_prescriptions) }}</td>
+                            <td>${{ "{:,.2f}".format(drug.total_amount_reimbursed) }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="error-message">No data available for Alaska.</p>
+        {% endif %}
+    </section>
+</body>
+</html>
